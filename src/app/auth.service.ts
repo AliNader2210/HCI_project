@@ -1,8 +1,8 @@
+import { jwtDecode } from 'jwt-decode';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import jwt_decode from 'jwt-decode';
 
 interface TokenPayload {
   userId: string; // Adjust according to your token structure
@@ -20,7 +20,7 @@ export class AuthService {
   private initializeUserRole(): void {
     const token = localStorage.getItem('token');
     if (token) {
-      const decodedToken: any = jwt_decode(token);
+      const decodedToken: any = jwtDecode(token);
       const userRole = decodedToken?.role || null; // Adjust key as per your JWT structure
       this.userRoleSubject.next(userRole);
     }
@@ -59,19 +59,11 @@ export class AuthService {
   getUserId(): string | null {
     const token = localStorage.getItem('token');
     if (token) {
-      const decodedToken: TokenPayload = jwt_decode(token);
+      const decodedToken: TokenPayload = jwtDecode(token);
       return decodedToken.userId;
     }
     return null; // No token found
   }
-  // getUserRole(): string | null {
-  //   const token = localStorage.getItem('token');
-  //   if (token) {
-  //     const decodedToken: TokenPayload = jwt_decode(token);
-  //     return decodedToken.role;
-  //   }
-  //   return null; // No token found
-  // }
   logout(): void {
     localStorage.removeItem('token');
     this.userRoleSubject.next(null); // Clear role

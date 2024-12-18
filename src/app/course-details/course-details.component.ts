@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CourseService } from '../course.service';
 import { AssignmentService } from '../assignment.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-course-details',
@@ -9,15 +10,19 @@ import { AssignmentService } from '../assignment.service';
   styleUrls: ['./course-details.component.css']
 })
 export class CourseDetailsComponent implements OnInit{
+  materialForm: FormGroup;
   courseId: string | null = null;
   courseMaterials: any = {};
-  newMaterial: any = {materialstype: '', materialtitle: '', materialsurl: ''};
   errorMessage: string | null = null;
   successMessage: string | null = null;
 
-  constructor(private route: ActivatedRoute, private courseService: CourseService,
-    private assignmentService: AssignmentService
-  ) {}
+  constructor(private route: ActivatedRoute, private courseService: CourseService) {
+    this.materialForm = new FormGroup({
+      materialstype: new FormControl('', [Validators.required]),
+      materialtitle: new FormControl('', [Validators.required]),
+      materialsurl: new FormControl('', [Validators.required, Validators.pattern('https?://.+')]) // URL validation
+    });
+  }
   ngOnInit(): void {
     this.courseId = this.route.snapshot.paramMap.get('courseId');
     if (this.courseId) {
@@ -31,17 +36,19 @@ export class CourseDetailsComponent implements OnInit{
     );
   }
   addMaterial(): void {
-    if (this.courseId && this.newMaterial.materialstype && this.newMaterial.materialtitle && this.newMaterial.materialsurl) {
-      this.courseService.addCourseMaterial(this.courseId, this.newMaterial).subscribe(
+    if (this.materialForm.valid) {
+      const newMaterial = this.materialForm.value
+      this.courseService.addCourseMaterial(this.courseId!, newMaterial).subscribe(
         () => {
           this.errorMessage = null
           this.successMessage = 'Material added successfully.'
+          this.materialForm.reset()
           // Reload the course materials
           this.loadCourseDetails(this.courseId!);
         },
         () => {
           this.successMessage = null
-          this.errorMessage = 'Please fill in all required fields.'
+          this.errorMessage = 'please try again later'
         }
       );
     } else {

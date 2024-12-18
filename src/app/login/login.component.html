@@ -16,14 +16,14 @@
             <img src="../../assets/imgs/man-wearing-t-shirt-gesturing.png" alt="">
         </div>
         <div class="form">
-            <form (ngSubmit)="login()">
+            <form [formGroup]="loginForm" (submit)="login()">
                 <h2 style="font-size: 30px;">Login</h2>
                 <p style="color: #252525;">Please contact us in case of any query.</p>
                 <div>
-                    <input type="email" class="credentials" style="background-color: #FFFFFF; padding: 10px;" placeholder="Your email address" required [(ngModel)]="credentials.email" name="email">
-                    <input [type]="showPassword ? 'text' : 'password'" placeholder="Your password" style="background-color: #FFFFFF; padding: 10px;" class="credentials" required [(ngModel)]="credentials.password" name="password">
+                    <input type="email" class="credentials" style="background-color: #FFFFFF; padding: 10px;" placeholder="Your email address" required formControlName="email" name="email">
+                    <input [type]="showPassword ? 'text' : 'password'" placeholder="Your password" style="background-color: #FFFFFF; padding: 10px;" class="credentials" required formControlName="password" name="password">
                     <div>
-                        <input type="checkbox" [(ngModel)]="showPassword" (click)="togglePassword()" name="showPassword">
+                        <input type="checkbox" (click)="togglePassword()" name="showPassword">
                         <label for="">Show Password</label>
                     </div>
                 </div>

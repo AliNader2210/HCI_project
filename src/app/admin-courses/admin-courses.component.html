@@ -7,10 +7,10 @@
       <div style="width: 5px; height: 5px; border-radius: 50%; background-color: #1B99D4;"></div>
       <div style="width: 5px; height: 5px; border-radius: 50%; background-color: #1B99D4;"></div>
     </div>
-    <form (submit)="addCourse(NewCourse)">
+    <form [formGroup]="courseForm" (submit)="addCourse()">
       <div style="display: flex; justify-content: space-between; border: 1px solid #E6E9FC; width: 400px; padding: 5px; border-radius: 10px; margin: auto;">
-        <input style="border: none; padding: 10px; width: 70%;" type="text" [(ngModel)]="NewCourse.title" placeholder="New Course Name" name="name">
-        <select [(ngModel)]="NewCourse.instructorId" name="instructorName" style="margin-right: 10px; border-radius: 10px; border: 1px solid #E6E9FC; cursor: pointer;">
+        <input style="border: none; padding: 10px; width: 70%;" type="text" formControlName="title" placeholder="New Course Name" name="name">
+        <select formControlName="instructorId" name="instructorName" style="margin-right: 10px; border-radius: 10px; border: 1px solid #E6E9FC; cursor: pointer;">
           <option disabled>Select Instructor</option>
           <option *ngFor="let instructor of instructors.instructors" [value]="instructor._id">{{ instructor.name }}</option>
         </select>

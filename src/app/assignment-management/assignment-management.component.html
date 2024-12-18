@@ -2,11 +2,11 @@
     <div class="content-container">
         <div class="form-container">
             <h3 class="header">Add Assignment</h3>
-            <form (ngSubmit)="addAssignment()">
+            <form [formGroup]="assignmentForm" (submit)="addAssignment()">
                 <div class="inputs-container">
-                  <input type="text" [(ngModel)]="newAssignment.title" name="assignment-title" placeholder="New Assignment Title">
-                  <input type="text" [(ngModel)]="newAssignment.description" name="assignment-description" placeholder="New Assignment Description">
-                  <input type="text" [(ngModel)]="newAssignment.dueDate" name="assignment-due-date" placeholder="New Assignment Due Date">
+                  <input type="text" formControlName="title" name="assignment-title" placeholder="New Assignment Title">
+                  <input type="text" formControlName="description" name="assignment-description" placeholder="New Assignment Description">
+                  <input type="text" formControlName="dueDate" name="assignment-due-date" placeholder="New Assignment Due Date">
                   <p *ngIf="successMessage" style="color: green;">{{successMessage}}</p>
                   <p *ngIf="errorMessage" style="color: red;">{{errorMessage}}</p>
                 </div>

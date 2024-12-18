@@ -3,6 +3,7 @@ import { CourseService } from '../course.service';
 import { AuthService } from '../auth.service';
 import { ProgressService } from '../progress.service';
 import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-course-management',
@@ -10,16 +11,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./course-management.component.css']
 })
 export class CourseManagementComponent implements OnInit{
+  courseForm: FormGroup;
   courses: any = {};
-  NewCourse: any = {
-    title: ''
-  }
   errorMessage: string | null = null
   successMessage: string | null = null
   constructor(private courseService: CourseService,
     private authService: AuthService,
     private router: Router
-  ) {}
+  ) {
+    this.courseForm = new FormGroup({
+      title: new FormControl('', [Validators.required])
+    });
+  }
   ngOnInit(): void {
     this.loadCourses();
   }
@@ -30,15 +33,22 @@ export class CourseManagementComponent implements OnInit{
     );
   }
   createCourse(): void {
-    this.courseService.addCourse(this.NewCourse).subscribe(() => {
-      this.errorMessage = null;
-      this.successMessage = 'Course created successfully!'
-      this.loadCourses();
-    },() => {
+    if(this.courseForm.valid){
+      const NewCourse = this.courseForm.value
+      this.courseService.addCourse(NewCourse).subscribe(() => {
+        this.errorMessage = null;
+        this.successMessage = 'Course created successfully!'
+        this.courseForm.reset();
+        this.loadCourses();
+      },() => {
+        this.successMessage = null;
+        this.errorMessage = 'Please try again later'
+      }
+    );
+    }else{
       this.successMessage = null;
-      this.errorMessage = 'Please enter the Course Name'
+      this.errorMessage = 'Please fill all the fields'
     }
-  );
   }
   viewProgress(courseId: string): void {
     this.router.navigate(['/progress', courseId]);

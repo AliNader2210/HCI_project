@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AssignmentService } from '../assignment.service';
 import { AuthService } from '../auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-assignment-management',
@@ -9,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./assignment-management.component.css']
 })
 export class AssignmentManagementComponent implements OnInit{
-  newAssignment: any = {title: '', description: '', dueDate: ''} ;
+  assignmentForm: FormGroup;
   courseId: string = ''
   assignments: any[] = [];
   errorMessage: string | null = null
@@ -17,7 +18,13 @@ export class AssignmentManagementComponent implements OnInit{
   constructor(private assignmentService: AssignmentService,
     private authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute) {}
+    private route: ActivatedRoute) {
+      this.assignmentForm = new FormGroup({
+        title: new FormControl('', [Validators.required]),
+        description: new FormControl('', [Validators.required]),
+        dueDate: new FormControl('', [Validators.required])
+      });
+    }
   ngOnInit(): void {
       this.courseId = this.route.snapshot.paramMap.get('courseId')!;
       this.loadAssignments();
@@ -32,18 +39,19 @@ export class AssignmentManagementComponent implements OnInit{
     this.router.navigate(['/submissions', assignmentId]);
   }
   addAssignment(){
-    if(this.courseId && this.newAssignment.title && this.newAssignment.description && this.newAssignment.dueDate){
-      this.assignmentService.addCourseAssignment(this.courseId, this.newAssignment).subscribe(
+    if(this.assignmentForm.valid){
+      const newAssignment = this.assignmentForm.value
+      this.assignmentService.addCourseAssignment(this.courseId, newAssignment).subscribe(
         () => {
           // Clear the input fields
-          this.newAssignment = {title: '', description: '', dueDate: ''};
+          this.assignmentForm.reset()
           this.errorMessage = null
           this.successMessage = 'Assignment added successfully'
           this.loadAssignments()
         },
         (error) => {
           this.successMessage = null
-          this.errorMessage = 'Please fill all the fields'
+          this.errorMessage = 'Please try again later'
         }
       );
     } else {

@@ -42,7 +42,7 @@ export class StudentEnrollmentComponent {
     );
   }
   assignStudentToCourse(): void {
-    if (this.selectedStudentId && this.selectedCourseId) {
+    if (this.selectedStudentId !== 'Select a Student' && this.selectedCourseId !== 'Select a Course to be Assigned') {
       this.enrollmentService.assignStudentToCourse(this.selectedStudentId, this.selectedCourseId).subscribe(
         () => {
           this.errorMessage = null;

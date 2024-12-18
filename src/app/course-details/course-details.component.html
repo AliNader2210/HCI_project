@@ -12,11 +12,11 @@
   <div class="container">
     <div class="form-container">
       <h3 class="material-header">Add Material</h3>
-      <form (ngSubmit)="addMaterial()">
+      <form [formGroup]="materialForm" (submit)="addMaterial()">
         <div class="inputs-container">
-          <input type="text" [(ngModel)]="newMaterial.materialstype" name="material-type" placeholder="New Material Type (lecture / video)">
-          <input type="text" [(ngModel)]="newMaterial.materialtitle" name="material-title" placeholder="New Material Title">
-          <input type="url" [(ngModel)]="newMaterial.materialsurl" name="material-url" placeholder="New Material Link">
+          <input type="text" formControlName="materialstype" name="material-type" placeholder="New Material Type (lecture / video)">
+          <input type="text" formControlName="materialtitle" name="material-title" placeholder="New Material Title">
+          <input type="url" formControlName="materialsurl" name="material-url" placeholder="New Material Link">
           <p *ngIf="successMessage" style="color: green;">{{successMessage}}</p>
           <p *ngIf="errorMessage" style="color: red;">{{errorMessage}}</p>
         </div>

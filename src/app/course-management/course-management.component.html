@@ -6,9 +6,9 @@
         <div style="width: 5px; height: 5px; border-radius: 50%; background-color: #1B99D4;"></div>
         <div style="width: 5px; height: 5px; border-radius: 50%; background-color: #1B99D4;"></div>
     </div>
-    <form (ngSubmit)="createCourse()">
+    <form [formGroup]="courseForm" (submit)="createCourse()">
         <div style="display: flex; justify-content: space-between; border: 1px solid #E6E9FC; width: 400px; padding: 5px; border-radius: 10px; margin: auto;">
-            <input style="border: none; padding: 10px; width: 80%;" type="text" placeholder="Enter Course Name" [(ngModel)]="NewCourse.title" name="name" required />
+            <input style="border: none; padding: 10px; width: 80%;" type="text" placeholder="Enter Course Name" formControlName="title" name="name" required />
             <button class="btn" type="submit">Add</button>
         </div>
         <p *ngIf="successMessage" style="color: green; text-align: center;">{{successMessage}}</p>
