@@ -1,0 +1,27 @@
+.line{
+    display: flex;
+    width: 50px;
+    justify-content: space-between;
+    margin: 10px auto;
+}
+.progress-container{
+    padding: 30px;
+}
+.header{
+    text-align: center;
+    font-size: 40px;
+}
+table{
+    width: 70%;
+    margin: 20px auto 0;
+}
+th{
+    text-align: left;
+    border-bottom: 1px solid #C1C1C1;
+    padding: 10px 5px;
+    color: #777D8C;
+}
+td{
+    border: 1px solid #C1C1C1;
+    padding: 20px;
+}

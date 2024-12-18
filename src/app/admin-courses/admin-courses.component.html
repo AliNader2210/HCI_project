@@ -1,0 +1,38 @@
+ <!-- Course Management Section -->
+ <div class="courses">
+    <h2 class="header">Courses Management</h2>
+    <div class="line">
+      <div style="width: 20px; height: 5px; border-radius: 10px; background-color: #1B99D4;"></div>
+      <div style="width: 5px; height: 5px; border-radius: 50%; background-color: #1B99D4;"></div>
+      <div style="width: 5px; height: 5px; border-radius: 50%; background-color: #1B99D4;"></div>
+      <div style="width: 5px; height: 5px; border-radius: 50%; background-color: #1B99D4;"></div>
+    </div>
+    <form (submit)="addCourse(NewCourse)">
+      <div style="display: flex; justify-content: space-between; border: 1px solid #E6E9FC; width: 400px; padding: 5px; border-radius: 10px; margin: auto;">
+        <input style="border: none; padding: 10px; width: 70%;" type="text" [(ngModel)]="NewCourse.title" placeholder="New Course Name" name="name">
+        <select [(ngModel)]="NewCourse.instructorId" name="instructorName" style="margin-right: 10px; border-radius: 10px; border: 1px solid #E6E9FC; cursor: pointer;">
+          <option disabled>Select Instructor</option>
+          <option *ngFor="let instructor of instructors.instructors" [value]="instructor._id">{{ instructor.name }}</option>
+        </select>
+        <button class="btn" type="submit">Add</button>
+      </div>
+    </form>
+    <p *ngIf="successMessage" style="color: green; font-size: 16px; text-align: center;">{{successMessage}}</p>
+    <p *ngIf="errorMessage" style="color: red; font-size: 16px; text-align: center;">{{errorMessage}}</p>
+    <ul>
+      <li *ngFor="let course of courses">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="width: 20px; height: 5px; border-radius: 10px; background-color: #1B99D4;"></div>
+          <p>{{ course.title }}</p>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="width: 20px; height: 5px; border-radius: 10px; background-color: #1B99D4;"></div>
+          <p>Instructor: {{course.instructor.name}}</p>
+        </div>
+        <div style="text-align: center; margin-top: 20px;">
+          <button style="margin-right: 40px; border-radius: 5px;" class="btn" [routerLink]="['/course-details', course._id]">Edit</button>
+          <button style="border-radius: 5px;" class="btn" (click)="archiveCourse(course._id)">Archive</button>
+        </div>
+      </li>
+    </ul>
+</div>

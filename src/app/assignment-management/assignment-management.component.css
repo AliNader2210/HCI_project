@@ -1,0 +1,70 @@
+.assignment-list{
+    padding: 10px;
+}
+.content-container{
+    display: flex;
+    justify-content: space-around;
+}
+.header{
+    padding: 10px 0 10px 10px;
+    color: #272727;
+}
+form{
+    border: 1px solid #C1C1C1;
+    padding: 40px 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+    justify-content: space-around;
+}
+.form-container{
+    width: 600px;
+}
+.inputs-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+input{
+    padding: 10px;
+    width: 350px;
+    border-radius: 5px;
+    border: 1px solid #E6E9FC;
+}
+.form-btn{
+    padding: 10px 20px;
+    height: fit-content;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    background-color: #1B99D4;
+    cursor: pointer;
+}
+.assignment-container{
+    width: 600px;
+}
+ul{
+    list-style-type: none;
+    height: 220px;
+    overflow-y: scroll;
+    padding: 0 15px;
+}
+li{
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+.btn{
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    background-color: #1B99D4;
+    cursor: pointer;
+}

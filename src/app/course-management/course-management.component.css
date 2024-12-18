@@ -1,0 +1,44 @@
+.header{
+    text-align: center;
+    font-size: 40px;
+}
+.container{
+    padding: 30px;
+}
+.line{
+    display: flex;
+    width: 50px;
+    justify-content: space-between;
+    margin: 10px auto;
+}
+form{
+    padding: 10px 0;
+}
+.btn{
+    padding: 15px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #1B99D4;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+input:focus{
+    outline: none;
+}
+ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 10px;
+    justify-content: center;
+    width: 70%;
+    margin: auto;
+}
+li{
+    margin: 15px 10px;
+    border: 1px solid #C1C1C1;
+    padding: 20px;
+    width: 450px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+}

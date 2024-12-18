@@ -1,0 +1,38 @@
+.header{
+    text-align: center;
+    font-size: 40px;
+}
+.line{
+    display: flex;
+    width: 50px;
+    justify-content: space-between;
+    margin: 10px auto;
+}
+.enrollment{
+    padding: 30px;
+}
+.container{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    gap: 80px;
+}
+select{
+    width: 400px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #E6E9FC;
+}
+button{
+    display: block;
+    margin: auto;
+    background-color: #1B99D4;
+    border: none;
+    color: white;
+    font-weight: bold;
+    padding: 15px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+}

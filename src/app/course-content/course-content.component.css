@@ -1,0 +1,41 @@
+.course-content{
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 30px 0;
+}
+.assignments{
+    width: 48%;
+}
+.materials{
+    width: 48%;
+}
+.header{
+    font-size: 40px;
+    text-align: center;
+}
+.material-container{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.inner-container{
+    padding: 20px;
+    width: 340px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+    border-radius: 15px;
+}
+button{
+    background-color: #1B99D4;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    padding: 15px 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+a{
+    display: block;
+    width: fit-content;
+    margin: auto;
+}

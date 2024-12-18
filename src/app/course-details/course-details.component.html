@@ -1,0 +1,38 @@
+<div class="course-content">
+  <h2 class="header">Edit a Course</h2>
+  <div class="line">
+    <div style="width: 20px; height: 5px; border-radius: 10px; background-color: #1B99D4;"></div>
+    <div style="width: 5px; height: 5px; border-radius: 50%; background-color: #1B99D4;"></div>
+    <div style="width: 5px; height: 5px; border-radius: 50%; background-color: #1B99D4;"></div>
+    <div style="width: 5px; height: 5px; border-radius: 50%; background-color: #1B99D4;"></div>
+  </div>
+  <div>
+    <app-assignment-management></app-assignment-management>
+  </div>
+  <div class="container">
+    <div class="form-container">
+      <h3 class="material-header">Add Material</h3>
+      <form (ngSubmit)="addMaterial()">
+        <div class="inputs-container">
+          <input type="text" [(ngModel)]="newMaterial.materialstype" name="material-type" placeholder="New Material Type (lecture / video)">
+          <input type="text" [(ngModel)]="newMaterial.materialtitle" name="material-title" placeholder="New Material Title">
+          <input type="url" [(ngModel)]="newMaterial.materialsurl" name="material-url" placeholder="New Material Link">
+          <p *ngIf="successMessage" style="color: green;">{{successMessage}}</p>
+          <p *ngIf="errorMessage" style="color: red;">{{errorMessage}}</p>
+        </div>
+        <button class="form-btn" type="submit">Add</button>
+      </form>
+    </div>
+    <div class="material-container">
+        <h3 class="material-header">Available Material</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; overflow-y: scroll; height: 220px; padding: 0 0 0 5px;">
+          <div class="inner-container" *ngFor="let material of courseMaterials.materials">
+            <h4 style="text-align: center;">{{ material.materialtitle }}</h4>
+            <p style="text-align: center; margin: 10px 0;">{{material.type}}</p>
+            <a *ngIf="material.type === 'lecture'" [href]="material.fileUrl" target="_blank"><button class="btn">View</button></a>
+            <a *ngIf="material.type === 'video'" [href]="material.fileUrl" target="_blank"><button class="btn">Watch</button></a>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

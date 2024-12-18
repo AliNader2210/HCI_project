@@ -1,0 +1,25 @@
+<div class="course-progress">
+    <h2 class="header">Students Progress</h2>
+    <div class="line">
+      <div style="width: 20px; height: 5px; border-radius: 10px; background-color: #1B99D4;"></div>
+      <div style="width: 5px; height: 5px; border-radius: 50%; background-color: #1B99D4;"></div>
+      <div style="width: 5px; height: 5px; border-radius: 50%; background-color: #1B99D4;"></div>
+      <div style="width: 5px; height: 5px; border-radius: 50%; background-color: #1B99D4;"></div>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Student Name</th>
+          <th>Grade</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let progress of courseProgress">
+          <td style="display: flex; align-items: center;"><div  style="width: 20px; height: 5px; border-radius: 10px; background-color: #1B99D4; margin-right: 10px;"></div><span style="color: #212121;">{{ progress.student.name }}</span></td>
+          <td style="color: #777D8C;">{{ progress.grade }}%</td>
+          <td [ngStyle]="{'color': progress.status === 'completed' ? '#008000' : '#777D8C'}">{{progress.status}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

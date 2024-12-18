@@ -1,0 +1,29 @@
+<div class="container">
+    <h2 class="header">Manage Courses</h2>
+    <div class="line">
+        <div style="width: 20px; height: 5px; border-radius: 10px; background-color: #1B99D4;"></div>
+        <div style="width: 5px; height: 5px; border-radius: 50%; background-color: #1B99D4;"></div>
+        <div style="width: 5px; height: 5px; border-radius: 50%; background-color: #1B99D4;"></div>
+        <div style="width: 5px; height: 5px; border-radius: 50%; background-color: #1B99D4;"></div>
+    </div>
+    <form (ngSubmit)="createCourse()">
+        <div style="display: flex; justify-content: space-between; border: 1px solid #E6E9FC; width: 400px; padding: 5px; border-radius: 10px; margin: auto;">
+            <input style="border: none; padding: 10px; width: 80%;" type="text" placeholder="Enter Course Name" [(ngModel)]="NewCourse.title" name="name" required />
+            <button class="btn" type="submit">Add</button>
+        </div>
+        <p *ngIf="successMessage" style="color: green; text-align: center;">{{successMessage}}</p>
+        <p *ngIf="errorMessage" style="color: red; text-align: center;">{{errorMessage}}</p>
+    </form>
+    <ul>
+        <li *ngFor="let course of courses.courses">
+            <div style="display: flex; align-items: center;">
+                <div style="width: 20px; height: 5px; border-radius: 10px; background-color: #1B99D4;"></div>
+                <p style="margin-left: 10px; font-size: 20px;">{{ course.title }}</p>
+            </div>
+            <div style="text-align: end; margin-top: 10px;">
+                <button style="margin-right: 10px; border-radius: 5px;" class="btn" [routerLink]="['/course-details', course._id]">Edit</button>
+                <button style="border-radius: 5px;" class="btn" (click)="viewProgress(course._id)">View Progress</button>
+            </div>
+        </li>
+    </ul>
+</div>

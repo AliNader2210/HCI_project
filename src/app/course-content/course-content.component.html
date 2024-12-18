@@ -1,0 +1,18 @@
+<!-- course-content.component.html -->
+<div class="course-content">
+  <div class="assignments">
+    <app-assignments-list></app-assignments-list>
+  </div>
+  <div class="materials">
+    <h2 class="header">Course Material</h2>
+    <div class="material-container">
+      <div class="inner-container"  *ngFor="let material of courseMaterials.materials">
+        <h4 style="text-align: center;">{{ material.materialtitle }}</h4>
+        <p style="text-align: center; margin: 10px 0;">{{material.type}}</p>
+        <a *ngIf="material.type === 'lecture'" [href]="material.fileUrl" target="_blank"><button>View</button></a>
+        <a *ngIf="material.type === 'video'" [href]="material.fileUrl" target="_blank"><button>Watch</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+  

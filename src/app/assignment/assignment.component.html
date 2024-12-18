@@ -1,0 +1,23 @@
+<div class="container">
+    <h2 class="header">Submit Assignment</h2>
+    <div class="line">
+        <div style="width: 20px; height: 5px; border-radius: 10px; background-color: #1B99D4;"></div>
+        <div style="width: 5px; height: 5px; border-radius: 50%; background-color: #1B99D4;"></div>
+        <div style="width: 5px; height: 5px; border-radius: 50%; background-color: #1B99D4;"></div>
+        <div style="width: 5px; height: 5px; border-radius: 50%; background-color: #1B99D4;"></div>
+    </div>
+    <div class="content-container">
+        <div class="img">
+            <img src="../../assets/imgs/R (2) 1.png" alt="">
+        </div>
+        <div class="form">
+            <form (submit)="onSubmit()">
+                <p style="color: #727695; font-weight: bold;">Your File</p>
+                <input style="margin: 15px;" type="file" name="file" accept=".pdf,.docx,.pptx,.txt,.jpg,.jpeg" (change)="onFileSelected($event)" required>
+                <input type="submit" value="Upload Now" class="btn">
+                <p *ngIf="successMessage" style="color: green; text-align: center;">{{successMessage}}</p>
+                <p *ngIf="errorMessage" style="color: red; text-align: center;">{{errorMessage}}</p>
+            </form>
+        </div>
+    </div>
+</div>

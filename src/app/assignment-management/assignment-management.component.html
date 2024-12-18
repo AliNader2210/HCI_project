@@ -1,0 +1,26 @@
+<div class="assignment-list">
+    <div class="content-container">
+        <div class="form-container">
+            <h3 class="header">Add Assignment</h3>
+            <form (ngSubmit)="addAssignment()">
+                <div class="inputs-container">
+                  <input type="text" [(ngModel)]="newAssignment.title" name="assignment-title" placeholder="New Assignment Title">
+                  <input type="text" [(ngModel)]="newAssignment.description" name="assignment-description" placeholder="New Assignment Description">
+                  <input type="text" [(ngModel)]="newAssignment.dueDate" name="assignment-due-date" placeholder="New Assignment Due Date">
+                  <p *ngIf="successMessage" style="color: green;">{{successMessage}}</p>
+                  <p *ngIf="errorMessage" style="color: red;">{{errorMessage}}</p>
+                </div>
+                <button class="form-btn" type="submit">Add</button>
+            </form>
+        </div>
+        <div class="assignment-container">
+            <h3 class="header" style="padding-left: 30px;">Available Assignments</h3>
+            <ul>
+                <li *ngFor="let assignment of assignments">
+                    <h3>{{ assignment.title }}</h3>
+                    <button class="btn" (click)="viewSubmissions(assignment._id)">View Submissions</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="my-tutor">
+        <p>My_Tutor</p>
+    </div>
+    <div class="content-container">
+        <div class="form">
+            <form (ngSubmit)="register()">
+                <h2 style="text-align: center; color: #1B99D4;">A Roadmap For Success</h2>
+                <div class="line">
+                    <div style="width: 20px; height: 5px; border-radius: 10px; background-color: #1B99D4;"></div>
+                    <div style="width: 5px; height: 5px; border-radius: 50%; background-color: #1B99D4;"></div>
+                    <div style="width: 5px; height: 5px; border-radius: 50%; background-color: #1B99D4;"></div>
+                    <div style="width: 5px; height: 5px; border-radius: 50%; background-color: #1B99D4;"></div>
+                </div>
+                <div class="inputs-cont">
+                    <div class="label-input-cont">
+                        <label for="">Name</label>
+                        <input class="inputs" type="text" name="name" placeholder="Name" [(ngModel)]="user.name" required>
+                    </div>
+                    <div class="label-input-cont">
+                        <label for="">Email</label>
+                        <input class="inputs" type="email" name="email" placeholder="Ex: some_email@domain.com" [(ngModel)]="user.email" required>
+                    </div>
+                    <div class="label-input-cont">
+                        <label for="">Password</label>
+                        <input class="inputs" [type]="showPassword ? 'text' : 'password'" name="password" placeholder="Password" [(ngModel)]="user.password" required>
+                    </div>
+                    <div class="label-input-cont">
+                        <label for="">Telephone Number</label>
+                        <input class="inputs" type="number" name="telephoneNumber" placeholder="01XXXXXXXXX" [(ngModel)]="user.telephone">
+                    </div>
+                    <div style="width: 100%;">
+                        <input type="checkbox" [(ngModel)]="showPassword" (click)="togglePassword()" name="showPassword">
+                        <label for="" style="font-size: 16px; margin-left: 5px;">Show Password</label>
+                    </div>
+                    <div class="label-input-cont">
+                        <label for="">Gender</label>
+                        <div class="label-radio-cont">
+                            <input type="radio" name="gender" value="male" [(ngModel)]="user.gender">
+                            <label for="" style="margin-right: 40px; font-weight: normal;">Male</label>
+                            <input type="radio" name="gender" value="female" [(ngModel)]="user.gender">
+                            <label for="" style="font-weight: normal;">Female</label>
+                        </div>
+                    </div>
+                    <div class="label-input-cont">
+                        <label for="">Role</label>
+                        <div class="label-radio-cont">
+                            <input type="radio" name="role" value="student" [(ngModel)]="user.role">
+                            <label for="" style="margin-right: 40px; font-weight: normal;">Student</label>
+                            <input type="radio" name="role" value="instructor" [(ngModel)]="user.role">
+                            <label for="" style="font-weight: normal;">Instructor</label>
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" value="Sign up" class="btn">
+                <p *ngIf="errorMessage" style="color: red; text-align: center;">{{errorMessage}}</p>
+            </form>
+        </div>
+        <div class="img">
+            <img src="../../assets/imgs/REGISTER-icon 1.png" alt="">
+        </div>
+    </div>
+</div>

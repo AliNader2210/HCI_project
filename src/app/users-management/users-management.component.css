@@ -1,0 +1,37 @@
+.line{
+    display: flex;
+    width: 50px;
+    justify-content: space-between;
+    margin: 10px auto;
+}
+.header{
+    text-align: center;
+    font-size: 40px;
+}
+.users{
+    padding: 30px;
+}
+ul{
+    list-style: none;
+    width: 70%;
+    margin: auto;
+    padding: 5px 0;
+}
+li{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #C1C1C1;
+    padding: 20px 10px;
+    align-items: center;
+    margin: 20px 0;
+}
+span{
+    color: #212121;
+}
+button{
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: white;
+    font-weight: bold;
+    cursor: pointer;
+}

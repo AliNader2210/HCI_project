@@ -1,0 +1,27 @@
+<!-- Assign Students to Courses Section -->
+<div class="enrollment">
+    <h2 class="header">Students Courses Enrollment</h2>
+    <div class="line">
+      <div style="width: 20px; height: 5px; border-radius: 10px; background-color: #1B99D4;"></div>
+      <div style="width: 5px; height: 5px; border-radius: 50%; background-color: #1B99D4;"></div>
+      <div style="width: 5px; height: 5px; border-radius: 50%; background-color: #1B99D4;"></div>
+      <div style="width: 5px; height: 5px; border-radius: 50%; background-color: #1B99D4;"></div>
+    </div>
+    <div class="container">
+        <div class="inner-container">
+            <select [(ngModel)]="selectedStudentId">
+              <option disabled>Select a Student</option>
+              <option *ngFor="let student of students.students" [value]="student._id">{{ student.name }}</option>
+            </select>
+        </div>
+        <div class="inner-container">
+            <select [(ngModel)]="selectedCourseId">
+              <option disabled>Select a Course to be Assigned</option>
+              <option *ngFor="let course of courses" [value]="course._id">{{ course.title }}</option>
+            </select>
+        </div>
+    </div>
+    <button (click)="assignStudentToCourse()">Assign Now</button>
+    <p *ngIf="successMessage" style="color: green; text-align: center; margin-top: 10px;">{{successMessage}}</p>
+    <p *ngIf="errorMessage" style="color: red; text-align: center; margin-top: 10px;">{{errorMessage}}</p>
+</div>

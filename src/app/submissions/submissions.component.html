@@ -1,0 +1,24 @@
+<div class="submissions">
+    <h2 class="header">Assignment Submissions</h2>
+    <div class="line">
+        <div style="width: 20px; height: 5px; border-radius: 10px; background-color: #1B99D4;"></div>
+        <div style="width: 5px; height: 5px; border-radius: 50%; background-color: #1B99D4;"></div>
+        <div style="width: 5px; height: 5px; border-radius: 50%; background-color: #1B99D4;"></div>
+        <div style="width: 5px; height: 5px; border-radius: 50%; background-color: #1B99D4;"></div>
+    </div>
+    <ul>
+        <li *ngFor="let submission of submissions.submissions">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <div style="width: 20px; height: 5px; border-radius: 10px; background-color: #1B99D4;"></div>
+                <span style="color: #212121;">{{ submission.studentName }}</span>
+            </div>
+            <a [href]="submission.fileUrl" target="_blank">View Submission</a>
+            <div style="display: flex; gap: 20px;">
+                <input type="number" [(ngModel)]="submission.submissiongrade" placeholder="Grade" />
+                <button (click)="gradeSubmission(submission.studentId, submission.submissiongrade)">Grade</button>
+            </div>
+            <p *ngIf="successMessage" style="color: green;">{{successMessage}}</p>
+            <p *ngIf="errorMessage" style="color: red;">{{errorMessage}}</p>
+        </li>
+    </ul>
+</div>

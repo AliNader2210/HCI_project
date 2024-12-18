@@ -1,0 +1,14 @@
+<div class="assignments-list">
+    <h2>Assignment</h2> 
+    <ul>
+      <li *ngFor="let assignment of assignments">
+        <div>
+          <h3 style="color: #727695; margin-bottom: 10px;">{{ assignment.title }}</h3>
+          <p style="color: #FF0000;"><strong>Due Date:</strong> {{ assignment.dueDate | date }}</p>
+        </div>
+        <button class="btn" [routerLink]="['/student-dashboard/assignments', assignment._id, courseId ,'submit']">
+            Submit Now
+        </button>
+      </li>
+    </ul>
+  </div>

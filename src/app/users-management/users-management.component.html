@@ -1,0 +1,21 @@
+<!-- User Management Section -->
+<div class="users">
+    <h3 class="header">Users Management</h3>
+    <div class="line">
+      <div style="width: 20px; height: 5px; border-radius: 10px; background-color: #1B99D4;"></div>
+      <div style="width: 5px; height: 5px; border-radius: 50%; background-color: #1B99D4;"></div>
+      <div style="width: 5px; height: 5px; border-radius: 50%; background-color: #1B99D4;"></div>
+      <div style="width: 5px; height: 5px; border-radius: 50%; background-color: #1B99D4;"></div>
+    </div>
+    <ul>
+      <li *ngFor="let user of users.users">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="width: 20px; height: 5px; border-radius: 10px; background-color: #1B99D4;"></div><span>{{ user.name }} - {{ user.role }}</span>
+        </div>
+        <div style="margin-right: 40px;">
+            <button (click)="approveUser(user._id)" *ngIf="!user.active" style="color: green; border: 1px solid green; margin-right: 10px;">Approve</button>
+            <button (click)="deactivateUser(user._id)" style="border: 1px solid #FF0000; color: #FF0000;">Deactivate</button>
+        </div>
+      </li>
+    </ul>
+  </div>

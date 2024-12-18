@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="my-tutor">
+        <p>My_Tutor</p>
+    </div>
+    <div class="content-container">
+        <div class="content">
+            <h2 style="font-size: 40px;">Your E-Learning System</h2>
+            <div style="background-color: rgba(255, 255, 255, 0.1); width: fit-content; padding: 5px; border-radius: 5px;">
+                <p>Step - by - Step with You</p>
+            </div>
+            <p>Equip yourself with all the courses
+                through  lectures , videos , guided by 
+                industry expert mentors</p>
+        </div>
+        <div class="img">
+            <img src="../../assets/imgs/man-wearing-t-shirt-gesturing.png" alt="">
+        </div>
+        <div class="form">
+            <form (ngSubmit)="login()">
+                <h2 style="font-size: 30px;">Login</h2>
+                <p style="color: #252525;">Please contact us in case of any query.</p>
+                <div>
+                    <input type="email" class="credentials" style="background-color: #FFFFFF; padding: 10px;" placeholder="Your email address" required [(ngModel)]="credentials.email" name="email">
+                    <input [type]="showPassword ? 'text' : 'password'" placeholder="Your password" style="background-color: #FFFFFF; padding: 10px;" class="credentials" required [(ngModel)]="credentials.password" name="password">
+                    <div>
+                        <input type="checkbox" [(ngModel)]="showPassword" (click)="togglePassword()" name="showPassword">
+                        <label for="">Show Password</label>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <p *ngIf="errorMessage" style="color: red; text-align: center;">{{errorMessage}}</p>
+                    <input style="background-color: #1B99D4; color: #FFFFFF; width: fit-content; padding: 0 70px; margin: auto;" type="submit" value="Sign in" class="credentials btn">
+                    <a routerLink="/register" style="color: #252525; text-decoration: none;">Create New Account</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
